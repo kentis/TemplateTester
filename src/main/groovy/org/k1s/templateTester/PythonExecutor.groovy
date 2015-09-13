@@ -7,7 +7,8 @@ class PythonExecutor {
     final def TEMP_DIR = "temp"
 
     def tmpl = 
-'''class PyExec:
+'''
+class PyExec:
 ${fields}
   def theMethod(self):
 ${setup? setup + '\n':''}${templateText?templateText+'\n':''}${teardown?teardown+'\n':''}
@@ -84,7 +85,7 @@ PyExec().theMethod()
       params.bindingElements.each{
         _bindings.append("$it: ',self.").append(it).append(",',")
       }
-      def teardown = "    print '["+_bindings.toString()+"]'"
+      def teardown = "    print ('["+_bindings.toString()+"]')"
         
       return execute("", templateText, teardown, fields) 
    }

@@ -2,10 +2,17 @@ package org.k1s.templateTester
 import groovy.text.*
 class GroovyTemplateGenerator implements TemplateGenerator{
 
-  def generateTemplate(templatePath, params){
+  def generateTemplate(templatePath, params, useResources = false){
     def retval = null
      try{
-       def tmpl = new File(templatePath).text
+       def tmpl
+       if(useResources){
+           println templatePath
+           println getClass().getClassLoader().getResourceAsStream(templatePath)
+           tmpl = getClass().getClassLoader().getResourceAsStream(templatePath).text
+       } else {
+           tmpl = new File(templatePath).text
+       }
        SimpleTemplateEngine engine = new SimpleTemplateEngine()
        Template simpleTemplate = engine.createTemplate(tmpl)
        retval = simpleTemplate.make(params).toString()

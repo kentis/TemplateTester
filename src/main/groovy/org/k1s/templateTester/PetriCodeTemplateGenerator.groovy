@@ -4,9 +4,9 @@ class PetriCodeTemplateGenerator implements TemplateGenerator {
   
   GroovyTemplateGenerator groovyTmplGen = new GroovyTemplateGenerator()
 
-  def generateTemplate(templatePath, params){
+  def generateTemplate(templatePath, params, useResources = false){
     //Generate the template
-    def retval = groovyTmplGen.generateTemplate(templatePath, params)
+    def retval = groovyTmplGen.generateTemplate(templatePath, params, useResources)
  
     //Remove tags
     retval = retval.replaceAll("%%VARS:.*%%","" )

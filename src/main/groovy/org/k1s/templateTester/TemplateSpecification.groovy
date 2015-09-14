@@ -8,6 +8,7 @@ class TemplateSpecification extends Specification {
 
   def generator = new GroovyTemplateGenerator()
   def executor
+  def useResources
   /**
    * Runs a template
    * @param template
@@ -15,7 +16,7 @@ class TemplateSpecification extends Specification {
    * @return the text
    */
    def genTemplate(templ, params){
-     generator.generateTemplate(templ, params)
+     generator.generateTemplate(templ, params, useResources)
    }
 
 

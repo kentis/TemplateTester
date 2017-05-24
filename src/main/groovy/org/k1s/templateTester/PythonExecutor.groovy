@@ -83,9 +83,9 @@ PyExec().theMethod()
       
       StringBuilder _bindings = new StringBuilder()
       params.bindingElements.each{
-        _bindings.append("$it: ',self.").append(it).append(",',")
+        _bindings.append("$it: '+str(+self.").append(it).append(")+','")
       }
-      def teardown = "    print ('["+_bindings.toString()+"]')"
+      def teardown = "    print ('["+_bindings.toString()+"+']')"
         
       return execute("", templateText, teardown, fields) 
    }

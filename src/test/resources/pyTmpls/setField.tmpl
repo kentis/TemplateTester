@@ -1,4 +1,4 @@
-<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+<%import static org.k1s.templateTester.CodeGenerator.indent
 if(binding.hasVariable('cond') && cond != []){%>
 ${indent(indentLevel)}if(${cond[0].trim().replace(params[0], 'self.'+params[0])}):
 ${indent(indentLevel+1)}self.${params[0].trim()} = ${condTrueExpr.replace('|',', ')}

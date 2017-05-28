@@ -15,7 +15,10 @@ class GroovyTemplateGenerator implements TemplateGenerator{
        }
        SimpleTemplateEngine engine = new SimpleTemplateEngine()
        Template simpleTemplate = engine.createTemplate(tmpl)
-       retval = simpleTemplate.make(params).toString()
+       if(params == null || params.size == 0)
+           retval = simpleTemplate.make().toString()
+       else
+           retval = simpleTemplate.make(params).toString()
      } catch(Exception e){
        throw new RuntimeException("Exception running template: $templatePath with $params", e)
      }
